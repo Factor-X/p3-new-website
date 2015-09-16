@@ -49,7 +49,7 @@ function pricesTag() {
   'supports'=>array('title', 'editor', 'custom-fields')
   ));
   register_taxonomy('category', 'price', array('hierarchical'=>true, 'label'=>'Catégories', 'query_var'=>true, 'rewrite'=>true));
-  // register_taxonomy('bestPrice', 'price', array('hierarchical'=>false, 'label'=>'Best price', 'query_var'=>true, 'rewrite'=>true));
+   register_taxonomy('bestPrice', 'price', array('hierarchical'=>false, 'label'=>'Best price', 'query_var'=>true, 'rewrite'=>true));
 }
 add_action('init', 'pricesTag');
 //Add questions tag

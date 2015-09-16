@@ -115,16 +115,16 @@ body{
 				width: auto;
 				@include pull(left);
 				margin-right: 25px;
-				.link-nav{
+				li{
 					width: auto;
 				}
-				.link-nav + .link-nav{
+				li + li{
 					margin-left: 50px;
-				}
-				a{
+                                        a{
 					color: $gray-darker;
 					text-transform: uppercase;
-					&:after, &:before{
+					&:after,
+                                        &:before{
 						content: "";
 						width: 100%;
 						height: 2px;
@@ -140,6 +140,8 @@ body{
 						}
 					}
 				}
+				}
+				
 			}
 			
 			.social-networks,
@@ -266,8 +268,10 @@ body{
 				border-radius: 50%;
 			}
 		}
-		&:focus{
+		&:focus,
+                &:hover{
 			outline: 0;
+                        cursor: pointer;
 		}
 	}
 	.slick-current{
@@ -287,6 +291,9 @@ body{
 			    z-index: -1;
 			}
 		}
+                &:hover{
+                    cursor: auto;
+                }
 	}
 }
 .slider-for{

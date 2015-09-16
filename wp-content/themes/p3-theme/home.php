@@ -10,13 +10,12 @@ Template Name: Home
             <div class="d-table">
                 <div class="d-table-row">
                     <div class="grid-container">
-                        <div class="grid-40 tablet-grid-50 mobile-grid-100 prefix-60">
+                        <div class="grid-50 tablet-grid-50 mobile-grid-100 prefix-50">
                             <div class="clearfix">
                                  <div class="logo-white"></div>
                             </div>
                             <?php
 	                            if(have_posts()){
-	                            	while(have_posts()){
 	                            		the_post();
                     		?>
                         				<div class="content-home">
@@ -25,7 +24,6 @@ Template Name: Home
                                 			<?php the_content(); ?>
                             			</div>
                             		<?php
-                            		}
                         		}
                         	?>
                         </div>
