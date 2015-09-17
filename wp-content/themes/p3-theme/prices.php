@@ -7,7 +7,7 @@ Template Name: Prices
 <?php
 	if(have_posts()){
 		wp_reset_postdata();
-                //show prices from 'working desk' category 
+        //show prices from 'working desk' category 
 		query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=5');
 ?>
 		<div class="call-to-show">
@@ -33,14 +33,17 @@ Template Name: Prices
             endif;
 		while(have_posts()){
 			the_post();
-                        the_tags('Cet article parle de : ', '-', '');
 			?>
 			
             <div class="grid-33">
-                <div class="pricing-table text-center">
+                <?php
+                    if( in_category('Best price') ) $bestPrice=true;
+                    else $bestPrice=false;
+                ?>
+                <div class="pricing-table text-center <?php if($bestPrice==true) echo 'best-price'; ?>">
                     <div class="header">
                         <span><?php the_title(); ?></span>
-                        <?php the_tags('Cet article parle de : ', '-', ''); ?>
+                        
                     </div>
                     <div class="content-pricing-table">
                         <div class="price">
@@ -55,7 +58,6 @@ Template Name: Prices
                     <div class="reserve">
                         <a href="#" class="btn btn-lg btn-primary">Je réserve !</a>
                     </div>
-                    
                 </div>
             </div>
 			<?php
@@ -86,25 +88,29 @@ Template Name: Prices
                         $cpt=1;
                         ?>
                     <div class="grid-33 <?php echo $klass; ?>">
-                    <div class="pricing-table text-center">
-                        <div class="header">
-                            <span><?php the_title(); ?></span>
-                        </div>
-                        <div class="content-pricing-table">
-                            <div class="price">
-                                    <?php
-                                            $packPrice = get_post_meta($post->ID, 'Price', true);
-                                    ?>
-                                <span><?php echo $packPrice; ?></span>
+                        <?php
+                            if( in_category('Best price') ) $bestPrice=true;
+                            else $bestPrice=false;
+                        ?>
+                        <div class="pricing-table text-center <?php if($bestPrice==true) echo 'best-price'; ?>">
+                            <div class="header">
+                                <span><?php the_title(); ?></span>
                             </div>
-                            <?php the_content(); ?>
+                            <div class="content-pricing-table">
+                                <div class="price">
+                                        <?php
+                                                $packPrice = get_post_meta($post->ID, 'Price', true);
+                                        ?>
+                                    <span><?php echo $packPrice; ?></span>
+                                </div>
+                                <?php the_content(); ?>
 
-                        </div>
-                        <div class="reserve">
-                            <a href="#" class="btn btn-lg btn-primary">Je réserve !</a>
+                            </div>
+                            <div class="reserve">
+                                <a href="#" class="btn btn-lg btn-primary">Je réserve !</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 <?php
             }
 ?>

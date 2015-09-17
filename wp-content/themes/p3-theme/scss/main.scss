@@ -143,9 +143,15 @@ body{
 						&:after,
 	                    &:before{
 							content: "";
-							width: 100%;
+							width: 0;
 							height: 2px;
 							display: block;
+							background: $brand-primary;
+							
+							-webkit-transition: all 0.3s ease;
+							-moz-transition: all 0.3s ease;
+							-ms-transition: all 0.3s ease;
+							transition: all 0.3s ease;
 						}
 						&:hover,
 						&:focus{
@@ -153,7 +159,7 @@ body{
 							font-weight: 400;
 							&:after,
 							&:before{
-								background: $brand-primary;
+								width: 100%;
 							}
 						}
 					}
@@ -229,11 +235,12 @@ body{
 		border: solid 1px $gray-light;
 		min-height: 400px;
 		margin-bottom: 20px;
-		position: relative;
+		position: relative;overflow: hidden;
 		.header{
 			background: $brand-primary;
 			padding: 10px 0;
 			font-size: 21px;
+
 			span{
 				color: #fff;
 			}
@@ -271,6 +278,24 @@ body{
 			bottom: 15px;
 			width: 100%;
 		}
+		&.best-price{
+			box-shadow: 0 0 15px $gray-darker;
+			zoom: 1.1;
+			&:after{
+				content: $icon-star;
+				font-family: "p3";
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: auto;
+				height: 31px;
+				width: 30px;
+				padding: 10px;
+				background: adjust-hue($brand-primary, 5%);
+				color: #fff;
+				font-size: 20px;
+			}
+		}
 	}
 }
 
@@ -300,7 +325,6 @@ body{
 			    -webkit-transform: rotate(180deg);
 			    transform: rotate(180deg);
 				-webkit-transition: all 0.5s ease;
-				-moz-transition: all 0.5s ease;
 				-ms-transition: all 0.5s ease;
 				transition: all 0.5s ease;
 			}
