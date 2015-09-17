@@ -1,13 +1,7 @@
 
 $(document).ready(function() {
 
-$.when(
-    $.getScript( "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ),
-    $.getScript( "http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js" ),
-    $.Deferred(function( deferred ){
-        $( deferred.resolve );
-    })
-).done(function(){
+
     $.fn.windowHeight();
     $.fn.scrollToElement();
     
@@ -66,9 +60,6 @@ $.when(
     
 });
 
-
-    
-});
 
 $.fn.windowHeight = function(){ 
     var viewportHeight = $(window).height();
