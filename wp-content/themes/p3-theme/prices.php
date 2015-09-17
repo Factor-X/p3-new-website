@@ -105,11 +105,37 @@ Template Name: Prices
                         </div>
                     </div>
                 </div>
-            
 <?php
             }
 ?>
-            </div>
+        
+
 <?php
         }
+        if(have_posts()){
+            wp_reset_postdata();
+            //show prices from 'additional services' category 
+            query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=7');
+            $post = $wp_query->post;
+            if ( in_category('7') ):
+                $catName = get_the_category();
+                $catName = $catName[0]->cat_name;
 ?>
+                <div class="grid-100">
+                    <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
+                </div>
+<?php
+            endif;
+            while (have_posts()) {
+                the_post();
+?>
+                <div class="grid-80">
+<?php
+                    the_content();
+?>
+                </div>
+<?php
+            }
+        }
+        ?>
+</div>

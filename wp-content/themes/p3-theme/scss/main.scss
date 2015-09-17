@@ -26,6 +26,26 @@ body{
 		}
 	}
 }
+#spaces{
+	.call-to-show{
+		background: url(img/spaces-section.jpg) top center fixed;
+	}
+}
+#prices{
+	.call-to-show{
+		background: url(img/prices-section.jpg) top center fixed;
+	}
+}
+#faq{
+	.call-to-show{
+		background: url(img/faq-section.jpg) top center fixed;
+	}
+}
+#contact{
+	.call-to-show{
+		background: url(img/contact-section.jpg) top center fixed;
+	}
+}
 #home{
 	background: url(img/home-bg.jpg) no-repeat top center fixed;
 	background-size : cover;
@@ -359,13 +379,18 @@ body{
 		width: 75%;
 		margin: 0 auto 30px auto;
 	}
-	.social-networks{
+	.menu-social-networks-container{
+		ul{
+			@extend .list-unstyled;
+			@extend .list-inline;
+			li + li{
+				margin-left: 30px;
+			}
+		}
+		
 		a{
 			text-decoration: none;
 			font-size: 21px;
-		}
-		a+a{
-			margin-left: 30px;
 		}
 	}
 }

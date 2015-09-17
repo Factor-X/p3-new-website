@@ -3,31 +3,30 @@
 //LOAD SCRIPTS AND STYLESHEETS
 //--jQuery
 function jQueryScripts(){
-    if (!is_admin()) {
+    // if (!is_admin()) {
         wp_register_script('jqueryjs', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3');
         wp_enqueue_script('jqueryjs');
-    }
+    // }
 }
 add_action('init', 'jQueryScripts');
 
 //--jQuery ui
 function jQueryUIScripts(){
-    if (!is_admin()) {
+    // if (!is_admin()) {
         wp_register_script('jqueryUIjs', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js', array(), '1.11.4');
         wp_enqueue_script('jqueryUIjs');
-    }
+    // }
 }
 add_action('init', 'jQueryUIScripts');
 
-//--Slick frmaword
+//--Slick frmawork
 function slickFrameWork(){
-    if (!is_admin()) {
+    // if (!is_admin()) {
         wp_register_script('slickFrameWork', 'http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js', array(), '');
         wp_enqueue_script('slickFrameWork');
-    }
+    // }
 }
 add_action('init', 'slickFrameWork');
-
 
 //--p3-scripts.js
 function p3Scripts() {
@@ -36,6 +35,7 @@ function p3Scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'p3Scripts' );
 
+//
 //FONTS
 //--roboto font
 function roboto_font(){
@@ -50,14 +50,28 @@ function volkhov_font(){
 }
 add_action('wp_print_styles', 'volkhov_font');
 
-//Show post thumbnails into wp admin
+//
+//ADMIN WORDPRESS
+//--post thumbnails
 add_theme_support('post-thumbnails');
-//Show menu tab into wp admin
+//--menu tab
 register_nav_menu('menu', 'menu P3');
-//Resize thumbnails
+//--widgets tab 
+if (function_exists('register_sidebar'))
+register_sidebar(array(
+  'name' => 'identityCard',
+  'before_widget' => '<div class="identity-card clearfix"><div class="logo-p3"></div>',
+  'after_widget'  => ''
+));
+register_sidebar(array(
+  'name' => 'socialNetworks',
+  'before_widget' => '',
+  'after_widget'  => '</div>'
+));
+//--resize thumbnails
 add_theme_support('post-thumbnails');
 add_image_size('imagesRoom400x400', 400, 400, true);
-//Add prices tag
+//--add prices menu
 function pricesTag() {
   register_post_type('price', array(
   'label'=>__('Prices'),
@@ -69,10 +83,10 @@ function pricesTag() {
   'supports'=>array('title', 'editor', 'custom-fields')
   ));
   register_taxonomy('category', 'price', array('hierarchical'=>true, 'label'=>'Catégories', 'query_var'=>true, 'rewrite'=>true));
-   register_taxonomy('bestPrice', 'price', array('hierarchical'=>false, 'label'=>'Best price', 'query_var'=>true, 'rewrite'=>true));
+  register_taxonomy('bestPrice', 'price', array('hierarchical'=>false, 'label'=>'Best price', 'query_var'=>true, 'rewrite'=>true));
 }
 add_action('init', 'pricesTag');
-//Add questions tag
+//--add questions menu
 function questionsTag(){
   register_post_type('questions', array(
     'label'=>__('Questions'),
@@ -86,7 +100,8 @@ function questionsTag(){
 }
 add_action('init', 'questionsTag');
 
-//Transform url for onepage
+//
+//TRANSFORM URL FOR ONEPAGE
 class mono_walker extends Walker_Nav_Menu{
  function start_el(&$output, $item, $depth, $args){
   global $wp_query;
@@ -127,5 +142,4 @@ class mono_walker extends Walker_Nav_Menu{
   $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
  }
 }
-
 ?>
