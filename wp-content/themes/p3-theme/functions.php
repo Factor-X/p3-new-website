@@ -125,7 +125,7 @@ class mono_walker extends Walker_Nav_Menu{
   $pathTab = explode('/',$cleanURL);
   $pathTab[sizeof($pathTab)-1] = '#'.$pathTab[sizeof($pathTab)-1];
   $path = implode('/',$pathTab );
-  
+
   $attributes .= ! empty( $item->url )        ? ' href="'   . $path .'"' : '';
   $attributes .= ! empty( $item->url )        ? ' data-title="'   .   sanitize_title($item->title) .'"' : '';
   $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';

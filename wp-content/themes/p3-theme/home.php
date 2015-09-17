@@ -51,17 +51,22 @@ Template Name: Home
 	                            <li><a href="#" class="uppercase">en</a></li>
 	                        </ul>
 	                    </div> -->
-
+					<div class="content-navbar">
                     <?php
 				        wp_nav_menu(array(
-				          "menu" => "menu",
-				          "menu_class" => "navbar list-inline list-unstyled clearfix",
-				          "container" =>"div",
-				          "container_class" => "content-navbar",
-				          "walker" => new mono_walker()
+				          	"menu" => "main-nav",
+							"menu_class" => "navbar list-inline list-unstyled clearfix",
+							"container" =>"",
+							"walker" => new mono_walker()
+				        ));
+
+				        wp_nav_menu(array(
+				          "menu" => "social-networks",
+				          "menu_class" => "list-inline list-unstyled social-networks",
+				          "container" =>""
 				        ));
 			    	?>
-                    
+                    </div>
                 </div>
             </div>
         </section>
@@ -74,17 +79,24 @@ Template Name: Home
 					global $wp_query;
 					$wp_query = new WP_Query($args);
 					// $templatePart = ($menu_item->title == 'Prices') ? 'price' : $menu_item->object;
+					// $templatePart = ($menu_item->title == 'Home') ? 'home' : $menu_item->title;
 					$templatePart = $menu_item->title;
+
+					if( $menu_item->title == 'Accueil'){
+						$templatePart = 'home';
+					}
+					else{
 		?>
 		<section <?php post_class('sep'); ?> id="<?php echo sanitize_title($menu_item->title);?>">
 		<?php 
-			if ( have_posts() ){
+			if ( have_posts() && isset($templatePart)){
    				include(locate_template($templatePart.'.php'));
 			}
 		?>
 		</section>
 		<?php
-				}
+		}}
+				
 			};
 		?>
 

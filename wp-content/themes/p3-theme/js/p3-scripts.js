@@ -69,8 +69,13 @@ $.fn.windowHeight = function(){
 $.fn.scrollToElement = function(){
     $('a').bind('click', function(event) {
         var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 65
+        
+        var url = $anchor.attr('href')
+        var a_href = url.replace('/p3-new-website/', '');
+        if(a_href=='#')
+            a_href='#home';
+        $('body').stop().animate({
+            scrollTop: $(a_href).offset().top - 65
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
