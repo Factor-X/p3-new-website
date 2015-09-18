@@ -14,7 +14,7 @@ Template Name: Prices
 			<h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
 		</div>
 		<div class="grid-container content-section">
-		    <div class="grid-60 prefix-20 text-center explains">
+		    <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-80 mobile-prefix-10 text-center explains">
 		    	<?php
 		    		$readme = get_post_meta($post->ID, "Readme", true);
 		    	?>
@@ -35,12 +35,12 @@ Template Name: Prices
 			the_post();
 			?>
 			
-            <div class="grid-33">
+            <div class="grid-33 tablet-grid-50 mobile-grid-100">
                 <?php
                     if( in_category('Best price') ) $bestPrice=true;
                     else $bestPrice=false;
                 ?>
-                <div class="pricing-table text-center <?php if($bestPrice==true) echo 'best-price'; ?>">
+                <div class="pricing-table text-center <?php if($bestPrice) echo 'best-price'; ?>">
                     <div class="header">
                         <span><?php the_title(); ?></span>
                         
@@ -81,13 +81,13 @@ Template Name: Prices
             while(have_posts()){
                 the_post();
                 if ($cpt == 0) {
-                    $klass = 'prefix-20';
-                        }else{
-                            $klass='';
-                        }
-                        $cpt=1;
-                        ?>
-                    <div class="grid-33 <?php echo $klass; ?>">
+                    $klass = 'prefix-20 tablet-prefix-0 mobile-prefix-0';
+                } else {
+                    $klass='';
+                }
+                    $cpt=1;
+?>
+                    <div class="grid-33 tablet-grid-50 mobile-grid-100 <?php echo $klass; ?>">
                         <?php
                             if( in_category('Best price') ) $bestPrice=true;
                             else $bestPrice=false;

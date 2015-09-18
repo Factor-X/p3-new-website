@@ -11,11 +11,8 @@
 	@include text-align(left);
 }
 .list-inline li{
-	float: left;
+	@include pull(left);
 	margin: 0;
-}
-.list-unstyled{
-	list-style: none;
 }
 .clearfix{
 	@include clearfix();

@@ -10,7 +10,7 @@ Template Name: Home
             <div class="d-table">
                 <div class="d-table-row">
                     <div class="grid-container">
-                        <div class="grid-50 tablet-grid-50 mobile-grid-100 prefix-50">
+                        <div class="grid-50 prefix-50 tablet-grid-60 tablet-prefix-40 mobile-grid-100 mobile-prefix-0">
                             <div class="clearfix">
                                  <div class="logo-white"></div>
                             </div>
@@ -33,19 +33,19 @@ Template Name: Home
                 <div class="d-table-row main-navbar">
                     <a href="#home" class="logo"></a>
 	                    <!-- <div class="content-navbar">  
-	                        <ul class="navbar list-inline list-unstyled clearfix">
+	                        <ul class="navbar list-inline clearfix">
 	                            <li class="link-nav text-center"><a href="#home">Home</a></li>
 	                            <li class="link-nav text-center"><a href="#spaces">Spaces</a></li>
 	                            <li class="link-nav text-center"><a href="#prices">Prices</a></li>
 	                            <li class="link-nav text-center"><a href="#faq">Faq</a></li>
 	                            <li class="link-nav text-center"><a href="#contact">Contact</a></li>
 	                        </ul>
-	                        <ul class="list-inline list-unstyled social-networks">
+	                        <ul class="list-inline social-networks">
 	                            <li><a href="#"><span class="icon-facebook"></span></a></li>
 	                            <li><a href="#"><span class="icon-twitter"></span></a></li>
 	                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
 	                        </ul>
-	                        <ul class="list-inline list-unstyled languages">
+	                        <ul class="list-inline languages">
 	                            <li><a href="#" class="uppercase">fr</a></li>
 	                            <li><a href="#" class="uppercase">nl</a></li>
 	                            <li><a href="#" class="uppercase">en</a></li>
@@ -55,14 +55,14 @@ Template Name: Home
                     <?php
 				        wp_nav_menu(array(
 				          	"menu" => "main-nav",
-							"menu_class" => "navbar list-inline list-unstyled clearfix",
+							"menu_class" => "navbar list-inline clearfix",
 							"container" =>"",
 							"walker" => new mono_walker()
 				        ));
 
 				        wp_nav_menu(array(
 				          "menu" => "social-networks",
-				          "menu_class" => "list-inline list-unstyled social-networks",
+				          "menu_class" => "list-inline social-networks",
 				          "container" =>""
 				        ));
 			    	?>
@@ -99,9 +99,5 @@ Template Name: Home
 				
 			};
 		?>
-
-		
-       
-        <?php wp_footer(); ?>
     </body>
 </html>

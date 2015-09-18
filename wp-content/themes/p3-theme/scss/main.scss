@@ -2,10 +2,25 @@
 	@include box-sizing();
 	color: $gray-darker;
 }
-body{
-	font-family: 'Roboto', sans-serif;
-	font-size: 100%;
+//BODY OF THE PAGE
+//=============================================
+.content-section{
+	padding: 40px 0;
+	.explains{
+		font-family: 'Volkhov', serif;
+		font-style: italic;
+		// margin-bottom: 20px;
+	}
+	@media screen and(max-width: $screen-desktop) {
+		padding: 30px 0;
+	}
+	@media screen and(max-width: $screen-tablet) {
+		padding: 20px 0;
+	}
 }
+
+//TITLE SECTION BETWEEN EVERY TABS
+//=============================================
 .call-to-show{
 	height: 250px;
 	overflow: hidden;
@@ -14,8 +29,6 @@ body{
 		color: #fff;
 		font-size: 68px;
 		margin-top: 70px;
-		position: relative;
-		z-index: 1;
 		&:after{
 			content: "";
 			display: block;
@@ -23,6 +36,34 @@ body{
 			width: 66px;
 			height: 7px;
 			margin: 0 auto;
+		}
+	}
+	@media screen and(max-width: $screen-lg-desktop){
+		height: 200px;
+		.title-section{
+			font-size: 60px;
+			margin-top: 50px;
+		}
+	}
+	@media screen and (max-width: $screen-desktop) {
+		height: 150px;
+		.title-section{
+			font-size: 48px;
+			margin-top: 30px;
+		}
+	}
+	@media screen and (max-width: $screen-tablet) {
+		height: 100px;
+		.title-section{
+			font-size: 32px;
+			margin-top: 20px;
+		}
+	}
+	@media screen and (max-width: $screen-phone) {
+		height: 80px;
+		.title-section{
+			font-size: 24px;
+			margin-top: 20px;
 		}
 	}
 }
@@ -51,6 +92,43 @@ body{
 	background-size : cover;
 }
 
+//SUBTITLES
+//=============================================
+.subtitle{
+	color: $brand-primary;
+	font-size: 36px;
+	&:before, &:after{
+		content: "";
+		background: $brand-primary;
+		width: 100px;
+		height: 3px;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 10px;
+	}
+	@media screen and(max-width: $screen-desktop) {
+		font-size: 28px;
+		&:before, &:after{
+			width: 80px;
+		}
+	}
+	@media screen and(max-width: $screen-tablet) {
+		font-size: 28px;
+		&:before, &:after{
+			width: 80px;
+			display: block;
+			margin: 10px auto;
+		}
+		&:before{
+			display: none;
+		}
+	}
+	@media screen and (max-width: $screen-phone) {
+		font-size: 24px;
+	}
+}
+
+// home page
 .logo-white{
 	background: url(img/logo-p3-white.png) no-repeat;
 	height: 165px;
@@ -71,7 +149,7 @@ body{
 	}
 }
 
-
+//navigation
 .main-navbar{
 	.logo{
 		display: none;
@@ -89,25 +167,24 @@ body{
 			width: 20%;
 			@include text-align(center);
 			a{
-			text-decoration: none;
-			color: #fff;
-			display: block;
-			&:after{
-				content: "";
-				width: 100%;
-				height: 2px;
+				text-decoration: none;
+				color: #fff;
 				display: block;
-			}
-			&:hover,
-			&:focus{
-				font-weight: 600;
 				&:after{
-					background: #fff;
+					content: "";
+					width: 100%;
+					height: 2px;
+					display: block;
+				}
+				&:hover,
+				&:focus{
+					font-weight: 600;
+					&:after{
+						background: #fff;
+					}
 				}
 			}
 		}
-		}
-		
 	}
 	
 	&.full-navbar{
@@ -195,76 +272,90 @@ body{
 		}
 	}
 }
+
+//--Sentence bottom spaces section
 .call-to-action{
-	padding: 40px 20px;
+	padding: 20px;
 	background: $light-blue;
-	span{
+	margin-bottom: 20px;
+	p{
 		font-weight: 300;
 		font-size: 23px;
+		display: inline-block;
+		margin: 5px 0 0 0;
 	}
 	a{
 		margin-right: -70px;
 	}
+	@media screen and (max-width: $screen-lg-desktop + 150) {
+		a{
+			margin-right: 0;
+		}
+	}
+	@media screen and (max-width: $screen-desktop) {
+		>div{
+			@include text-align(center);
+			p{
+				font-size: 21px;
+				margin: 0 0 15px 0;
+				display: block;
+			}
+			a{
+				float: none;
+				display: inline-block;
+			}
+		}
+	}	
+	@media screen and (max-width: $screen-tablet) {
+		padding: 15px 0;
+		>div{
+			p{
+				display: none;
+			}
+		}	
+	}
+	@media screen and(max-width: $screen-phone){
+		padding: 10px 0;
+	}
 }
 
 
-.content-section{
-	padding: 50px 0;
-	.explains{
-		font-family: 'Volkhov', serif;
-		font-style: italic;
-		margin-bottom: 20px;
-	}
-
-	//subtitles
-	.subtitle{
-		color: $brand-primary;
-		font-size: 36px;
-		&:before, &:after{
-			content: "";
-			background: $brand-primary;
-			width: 100px;
-			height: 3px;
-			display: inline-block;
-			vertical-align: middle;
-			margin: 0 10px;
+//PRICINGS TABLES
+//=============================================
+.pricing-table{
+	border: solid 1px $gray-light;
+	min-height: 350px;
+	margin-bottom: 20px;
+	position: relative;overflow: hidden;
+	.header{
+		background: $brand-primary;
+		padding: 10px 0;
+		font-size: 21px;
+		font-weight: 500;
+		span{
+			color: #fff;
 		}
 	}
-
-	.pricing-table{
-		border: solid 1px $gray-light;
-		min-height: 400px;
-		margin-bottom: 20px;
-		position: relative;overflow: hidden;
-		.header{
-			background: $brand-primary;
-			padding: 10px 0;
-			font-size: 21px;
-
+	.content-pricing-table{
+		padding: 15px;
+		.price{
+			font-size: 42px;
+			font-weight: 700;
+			&:after{
+				content: "";
+				display: block;
+				background: url(img/sprite.png) no-repeat 0 -20px;
+				width: 66px;
+				height: 7px;
+				margin: 0 auto;
+			}
 			span{
-				color: #fff;
+				color: $brand-primary;
 			}
 		}
-		.content-pricing-table{
-			padding: 15px;
-			.price{
-				font-size: 42px;
-				font-weight: 700;
-				&:after{
-					content: "";
-					display: block;
-					background: url(img/sprite.png) no-repeat 0 -20px;
-					width: 66px;
-					height: 7px;
-					margin: 0 auto;
-				}
-				span,
-				sup{
-					color: $brand-primary;
-				}
-			}
-			ul{
-				padding: 15px 0 0 5px;
+		ul{
+			padding: 15px 0 0 0;
+			li{
 				[class^="icon-"], [class*=" icon-"]{
 					color: $brand-success;
 				}
@@ -273,27 +364,56 @@ body{
 				}
 			}
 		}
-		.reserve{
+	}
+	.reserve{
+		position: absolute;
+		bottom: 15px;
+		width: 100%;
+	}
+	&.best-price{
+		box-shadow: 0 0 15px $gray-darker;
+		&:after{
+			content: $icon-star;
+			font-family: "p3";
 			position: absolute;
-			bottom: 15px;
-			width: 100%;
+			top: 0;
+			right: 0;
+			left: auto;
+			height: 31px;
+			width: 30px;
+			padding: 10px;
+			background: adjust-hue($brand-primary, 6%);
+			color: #fff;
+			font-size: 20px;
 		}
-		&.best-price{
-			box-shadow: 0 0 15px $gray-darker;
-			zoom: 1.1;
-			&:after{
-				content: $icon-star;
-				font-family: "p3";
-				position: absolute;
-				top: 0;
-				right: 0;
-				left: auto;
-				height: 31px;
-				width: 30px;
-				padding: 10px;
-				background: adjust-hue($brand-primary, 5%);
-				color: #fff;
-				font-size: 20px;
+	}
+	@media screen and(max-width: $screen-lg-desktop) {
+		.content-pricing-table{
+			ul{
+				li{
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+	@media screen and(max-width: $screen-desktop) {
+		min-height: auto;
+		.content-pricing-table{
+			.price{
+				font-size: 36px;
+			}
+			ul{
+				li{
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	@media screen and(max-width: $screen-tablet) {
+		.content-pricing-table{
+			padding: 10px;	
+			.price{
+				font-size: 28px;
 			}
 		}
 	}
@@ -377,9 +497,8 @@ body{
 		}
 	}
 }
-
-
-
+//ACCORDION FAQ
+//=============================================
 .faq-accordion a,
 .faq-accordion span {
 	display: block;
@@ -410,9 +529,60 @@ body{
 	border: 1px solid $brand-primary;
 }
 
+
+//CONTACT PAGE
+//=============================================
+//--maps and form
+.maps-and-form{
+	p{
+		display: none;
+	}
+	.form-group{
+		margin-bottom: 15px;
+		label{
+			display: inline-block;
+		    max-width: 100%;
+		    margin-bottom: 5px;
+		    font-weight: 700;
+		}
+		.form-control{
+			display: block;
+		    width: 100%;
+		    height: 40px;
+		    padding: 6px 12px;
+		    font-size: 14px;
+		    line-height: 1.5;
+		    color: $gray-darker;
+		    border: 1px solid $gray-light;
+		}
+		textarea{
+			resize:none;
+			height: 200px !important;
+		}
+		&.form-inline{
+	    	display: inline-block;
+	    	width: 48%;
+	    }
+	    &.form-inline + &.form-inline{
+	    	margin-left: 3%;
+	    }
+	}
+	@media screen and (max-width: $screen-tablet) {
+		.form-group{
+			&.form-inline{
+				display: block;
+				width: 100%;
+				margin-left: 0 !important;
+			}
+		}
+	}
+}
+//--identity card
 .identity-card{
 	background: $gray-lighter;
 	padding: 20px;
+	margin-bottom: 15px;
+	clear: both;
 	.logo-p3{
 		background: url(img/logo-p3-color.png) no-repeat;
 		background-size: 100% auto;
@@ -422,50 +592,46 @@ body{
 	}
 	.menu-social-networks-container{
 		ul{
-			@extend .list-unstyled;
 			@extend .list-inline;
 			li + li{
 				margin-left: 30px;
 			}
 		}
-		
 		a{
 			text-decoration: none;
 			font-size: 21px;
 		}
 	}
-}
-
-.form-group{
-	margin-bottom: 15px;
-	label{
-		display: inline-block;
-	    max-width: 100%;
-	    margin-bottom: 5px;
-	    font-weight: 700;
+	@media screen and (max-width: $screen-desktop) {
+		.logo-p3{
+			height: 95px;
+			width: 200px;
+			margin: 0 auto 10px auto;
+		}
 	}
-	.form-control{
-		display: block;
-	    width: 100%;
-	    height: 40px;
-	    padding: 6px 12px;
-	    font-size: 14px;
-	    line-height: 1.5;
-	    color: $gray-darker;
-	    border: 1px solid $gray-light;
-		
+	@media screen and (max-width: $screen-tablet) {
+		.logo-p3{
+			height: 95px;
+			width: 200px;
+		}
+		p{
+			@include text-align(center);
+		}
+		.menu-social-networks-container{
+			ul{
+			    margin: auto;
+				text-align: center;
+				li{
+					width: 33%;
+				}
+				li + li{
+					margin-left: 0;
+				}
+			}
+			a{
+				text-decoration: none;
+				font-size: 21px;
+			}
+		}
 	}
-	textarea{
-		resize:none;
-		height: 200px !important;
-	}
-	&.form-inline{
-    	display: inline-block;
-    	width: 48%;
-    }
-    &.form-inline + &.form-inline{
-    	margin-left: 3%;
-    	
-    }
-	
 }

@@ -1,5 +1,4 @@
 @import "reset";
-@import "partials/unsemantic-grid-responsive-tablet";
 @import "text";
 @import "slick";
 @import "p3-variables";
@@ -7,3 +6,7 @@
 @import "utilities-class";
 @import "p3-font";
 @import "main";
+
+@import "unsemantic-grid-responsive-tablet";
+
+// @import "unsemantic-grid-responsive";
