@@ -9,25 +9,6 @@ function jQueryScripts(){
     // }
 }
 add_action('init', 'jQueryScripts');
-
-//--jQuery ui
-function jQueryUIScripts(){
-    // if (!is_admin()) {
-        wp_register_script('jqueryUIjs', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js', array(), '1.11.4');
-        wp_enqueue_script('jqueryUIjs');
-    // }
-}
-add_action('init', 'jQueryUIScripts');
-
-//--Slick frmawork
-function slickFrameWork(){
-    // if (!is_admin()) {
-        wp_register_script('slickFrameWork', 'http://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js', array(), '');
-        wp_enqueue_script('slickFrameWork');
-    // }
-}
-add_action('init', 'slickFrameWork');
-
 //--p3-scripts.js
 function p3Scripts() {
 	wp_register_script('p3Scripts', get_bloginfo('stylesheet_directory').'/js/p3-scripts.js', array(), '');

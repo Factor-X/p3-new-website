@@ -10,7 +10,7 @@ Template Name: Home
             <div class="d-table">
                 <div class="d-table-row">
                     <div class="grid-container">
-                        <div class="grid-50 prefix-50 tablet-grid-60 tablet-prefix-40 mobile-grid-100 mobile-prefix-0">
+                        <div class="grid-50 prefix-50 tablet-grid-60 tablet-prefix-40">
                             <div class="clearfix">
                                  <div class="logo-white"></div>
                             </div>
@@ -52,6 +52,7 @@ Template Name: Home
 	                        </ul>
 	                    </div> -->
 					<div class="content-navbar">
+						<div id="menu"></div>
                     <?php
 				        wp_nav_menu(array(
 				          	"menu" => "main-nav",
