@@ -54,18 +54,25 @@ Template Name: Home
 					<div class="content-navbar">
 						<div id="menu"></div>
                     <?php
+                    	//Links
 				        wp_nav_menu(array(
 				          	"menu" => "main-nav",
 							"menu_class" => "navbar list-inline clearfix",
 							"container" =>"",
 							"walker" => new mono_walker()
 				        ));
-
+						//Social networks
 				        wp_nav_menu(array(
 				          "menu" => "social-networks",
 				          "menu_class" => "list-inline social-networks",
 				          "container" =>""
 				        ));
+						//Languages
+				        // wp_nav_menu(array(
+				        //   "menu" => "social-networks",
+				        //   "menu_class" => "list-inline social-networks",
+				        //   "container" =>""
+				        // ));
 			    	?>
                     </div>
                 </div>
