@@ -27,7 +27,7 @@ $.when(
         slidesToScroll: 1,
         arrows: false,
         fade: false,
-        draggable: false,
+        draggable: true,
         asNavFor: '.slider-nav',
         responsive:[
         {

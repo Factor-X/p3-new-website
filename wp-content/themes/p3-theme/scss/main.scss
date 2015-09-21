@@ -739,7 +739,6 @@
 	border: 1px solid $brand-primary;
 }
 
-
 //CONTACT PAGE
 //=============================================
 //--maps and form
@@ -846,50 +845,46 @@
 	}
 }
 
-
-
-
-
-
-
-
-
-
-//test
-  .gallery {
-    margin: auto;
-    padding: 60px 0 75px 0;
-    li {
-      float:left;
-      &:nth-child(even) {
-        margin-top:196px;
-        margin-left:-53px;
-      }
-      &:nth-child(odd) {
-        margin-left:-53px
-      }
-      &:first-child {
-        margin-left:0;
-      }
-    }
-  }
-  .losange, .losange div {
-    margin: 0 auto;
-    transform-origin: 50% 50%;
-    overflow: hidden;
-    width: 250px;
-    height: 250px;
-  }
-  .losange {
-    transform: rotate(45deg) translateY(10px);
-  }
-  .losange .los1 {
-    width: 354px;
-    height: 354px;
-    transform: rotate(-45deg) translateY(-73px);
-  }
-  .losange .los1 img {
-    width: 100%;
-    height: auto;
-  }
-
+//GALLERY
+//=============================================
+.gallery {
+	margin: auto;
+	padding: 60px 0 75px 0;
+	display: inline-block;
+	li {
+		float:left;
+		cursor: pointer;
+		&:nth-child(even) {
+			margin-top:160px;
+			margin-left:-45px;
+		}
+		&:nth-child(odd) {
+			margin-left:-45px
+		}
+		&:first-child {
+			margin-left:0;
+		}
+		&:hover .losange .los1 img {
+			transform: rotate(10deg) scale(1.3);
+		}
+	}
+}
+.losange, .losange div {
+	margin: 0 auto;
+	transform-origin: 50% 50%;
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+}
+.losange {
+	transform: rotate(45deg) translateY(10px);
+}
+.losange .los1 {
+	width: 283px;
+	height: 283px;
+	transform: rotate(-45deg) translateY(-59px);
+}
+.losange .los1 img {
+	@include img-responsive();
+	@include transition();
+}
