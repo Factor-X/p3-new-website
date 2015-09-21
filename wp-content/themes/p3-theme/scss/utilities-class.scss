@@ -32,15 +32,16 @@
 	@include pull(right);
 }
 .img-responsive{
-	max-width: 100%;
-	width: auto;
-	height: auto;
+	@include img-responsive();
 }
 .btn{
 	text-decoration: none;
 	&.btn-primary{
 		background: $brand-primary;
 		color: #fff;
+		&:hover{
+			background: adjust-hue($brand-primary, 6%);
+		}
 	}
 	&.btn-default{
 		color: $gray-darker;

@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 $.when(
     $.getScript( "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" ),
@@ -15,8 +14,9 @@ $.when(
         $.fn.windowHeight();
     });
 
+    //show menu mobiles
     $('#menu').click(function() {
-        $('.navbar').slideToggle( "slow", function() {
+        $('.navbar').stop().slideToggle( "slow", function() {
         });
     })
 
@@ -27,22 +27,64 @@ $.when(
         arrows: false,
         fade: false,
         draggable: false,
-        asNavFor: '.slider-nav'
+        asNavFor: '.slider-nav',
+        responsive:[
+        {
+            breakpoint:768,
+            settings:{
+                draggable: true
+            }
+        }
+        ]
     });
     $('.slider-nav').slick({
         swipeToSlide:false,
         swipe: false,
         infinite: true,
-        centerPadding:"150px",
+        centerPadding:"0px",
         arrows : false,
-        draggable:false,
+        draggable:true,
         slidesToShow: 3,
         slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: false,
         centerMode: true,
         draggable: false,
-        focusOnSelect: true
+        focusOnSelect: true,
+        responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            centerPadding:"0px"
+          }
+        },
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerPadding:"150px"
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerPadding:"120px"
+          }
+        },
+        {
+          breakpoint: 650,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true,
+          }
+        }
+        ]
     });
 
     $.fn.drawCanvas();

@@ -128,7 +128,8 @@
 	}
 }
 
-// home page
+//HOME PAGE
+//=============================================
 .logo-white{
 	background: url(img/logo-p3-white.png) no-repeat;
 	height: 165px;
@@ -160,7 +161,9 @@
 	}
 }
 
-//navigation
+//NAVIGATION
+//=============================================
+//--light nav
 .main-navbar{
 	.logo,
 	.languages,
@@ -196,7 +199,7 @@
 					height: 2px;
 					display: block;
 				}
-				&:hover,
+				&:hover
 				&:focus{
 					outline: none;
 					&:after{
@@ -204,14 +207,17 @@
 					}
 				}
 			}
+			&.reserve-btn{
+				display: none;
+			}
 		}
 	}
-	@media screen and (max-width: $screen-lg-desktop) {
+	@media screen and (max-width: $screen-lg-desktop + 20) {
 		.navbar{
 			width: 80%;
 		}
 	}
-	@media screen and (max-width: $screen-phone + 100) {
+	@media screen and (max-width: $screen-desktop) {
 		#menu{
 			display: block;
 			position: absolute;
@@ -252,7 +258,7 @@
 			}
 		}
 	}
-	
+	//--full-nav
 	&.full-navbar{
 		background: #fff;
 		position: fixed;
@@ -302,6 +308,9 @@
 								width: 100%;
 							}
 						}
+					}
+					&.reserve-btn{
+						display: block;
 					}
 				}
 				li + li{
@@ -500,7 +509,7 @@
 		}
 	}
 	@media screen and(max-width: $screen-desktop) {
-		min-height: auto;
+		
 		.content-pricing-table{
 			.price{
 				font-size: 36px;
@@ -512,6 +521,9 @@
 			}
 		}
 	}
+	@media screen and(max-width: $screen-tablet - 1) {
+		min-height: auto;
+	}
 	@media screen and(max-width: $screen-tablet) {
 		.content-pricing-table{
 			padding: 10px;	
@@ -521,18 +533,20 @@
 		}
 	}
 }
-
+//SPACES
+//=============================================
 //slider spaces
 .slider-nav{
 	.item{
 		text-align: center;
-		padding: 50px;
+		padding: 50px 0;
 		.img-holder{
 			position: relative;
-			margin-bottom: 60px;
+			margin: 0 auto 50px auto;
 			img{
 				margin: 0 auto;
 				border-radius: 50%;
+				@include img-responsive();
 			}
 			&:after{
 				content: '';
@@ -547,29 +561,124 @@
 			}
 		}
 		&:focus,
-                &:hover{
-					outline: none;
-                    cursor: pointer;
+        &:hover{
+			outline: none;
+            cursor: pointer;
 		}
 	}
 	.slick-current{
 		.img-holder{
 			&:after{
-				content: '';
-			    position: absolute;
 			    width: 350px;
 			    height: 350px;
-			    top: 25px;
-			    left: 40px;
 			    @include rotate(45);
 			    border: solid 1px $gray-darker;
 			    border-radius: 0;
 			    z-index: -1;
+			    margin: auto;
 			}
 		}
         &:hover{
             cursor: auto;
         }
+	}
+	@media screen and (max-width: $screen-lg-desktop + 300){
+		.item{
+			padding: 50px 0 0 0;
+			.img-holder{
+				width:330px;
+				&:after{
+					width: 330px;
+				    height: 330px;
+				}
+			}
+		}
+		.slick-current{
+			.img-holder{
+				&:after{
+				    width: 300px;
+				    height: 300px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: $screen-lg-desktop){
+		.item{
+			padding: 40px 0 0 0;
+			.img-holder{
+				width:280px;
+				&:after{
+					width: 280px;
+				    height: 280px;
+				}
+			}
+		}
+		.slick-current{
+			.img-holder{
+				&:after{
+				    width: 250px;
+				    height: 250px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: $screen-desktop){
+		.item{
+			.img-holder{
+				width:350px;
+				&:after{
+					width: 350px;
+				    height: 350px;
+				}
+			}
+		}
+		.slick-current{
+			.img-holder{
+				&:after{
+				    width: 300px;
+				    height: 300px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: $screen-tablet){
+		.item{
+			.img-holder{
+				width:280px;
+				&:after{
+					width: 280px;
+				    height: 280px;
+				}
+			}
+		}
+		.slick-current{
+			.img-holder{
+				&:after{
+				    width: 250px;
+				    height: 250px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: $screen-phone){
+		.item{
+			padding: 30px 0 0 0;
+			.img-holder{
+				width:230px;
+				&:after{
+					width: 230px;
+				    height: 230px;
+				}
+			}
+		}
+		.slick-current{
+			.img-holder{
+				&:after{
+				    width: 200px;
+				    height: 200px;
+				}
+			}
+		}
 	}
 }
 .slider-for{

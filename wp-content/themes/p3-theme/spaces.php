@@ -30,7 +30,6 @@ Template Name: Spaces
                 	<?php the_post_thumbnail('imagesRoom400x400'); ?>
                 </div>
             </div>
-        
 <?php
     	}
 ?>
