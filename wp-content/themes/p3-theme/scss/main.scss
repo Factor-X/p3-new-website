@@ -845,3 +845,51 @@
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+//test
+  .gallery {
+    margin: auto;
+    padding: 60px 0 75px 0;
+    li {
+      float:left;
+      &:nth-child(even) {
+        margin-top:196px;
+        margin-left:-53px;
+      }
+      &:nth-child(odd) {
+        margin-left:-53px
+      }
+      &:first-child {
+        margin-left:0;
+      }
+    }
+  }
+  .losange, .losange div {
+    margin: 0 auto;
+    transform-origin: 50% 50%;
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+  }
+  .losange {
+    transform: rotate(45deg) translateY(10px);
+  }
+  .losange .los1 {
+    width: 354px;
+    height: 354px;
+    transform: rotate(-45deg) translateY(-73px);
+  }
+  .losange .los1 img {
+    width: 100%;
+    height: auto;
+  }
+

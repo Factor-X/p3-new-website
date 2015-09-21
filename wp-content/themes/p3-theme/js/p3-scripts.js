@@ -9,6 +9,7 @@ $.when(
     $.fn.windowHeight();
     $.fn.scrollToElement();
     
+    
     //resize home bg
     $(window).resize(function() {
         $.fn.windowHeight();
@@ -153,31 +154,36 @@ $.fn.drawCanvas = function(){
 //         .attr("id", "canvas-gallery")
 //         .css("position", "relative")
 // );
+// var img = document.createElement('IMG');
+// $(".slider-for .slick-current #canvas-gallery").append(
+//     $(document.createElement("canvas"))
+//         .attr("class","canvas-element")
+//         .width(1220)
+//         .height(720)
+//         .text('This element is not supported by your browser')
+//     );
+//     var ctx = $(".canvas-element").get(0).getContext('2d');
+
+//     img.onload = function () {
+//         ctx.save();
 
 
-//     for(i=0; i<=4;i++){
-//         $(".slider-for .slick-current #canvas-gallery").append(
-//         $(document.createElement("canvas"))
-//             .attr("class","canvas-element")
-//             .width(200)
-//             .height(200)
-//             .text('this element is not supported by your browser')
-//         );
-//         var ctx = $(".canvas-element").get(i).getContext('2d');
 
-//         var img = document.createElement('IMG');
-//         img.onload = function () {
-//             ctx.save();
-//             ctx.beginPath();
-//             ctx.moveTo(150, 0);
-//             ctx.lineTo(300, 75);
-//             ctx.lineTo(150, 150);
-//             ctx.lineTo(0, 75);
-//             ctx.closePath();
-//             ctx.clip();
-//             ctx.drawImage(img, 0, 0);
-//             ctx.restore();
-//         }
-//         img.src = "http://lorempixel.com/300/150/";
+//         // ctx.beginPath();
+//         // ctx.moveTo(150, 0);
+//         // ctx.lineTo(300, 75);
+//         // ctx.lineTo(150, 150);
+//         // ctx.lineTo(0, 75);
+//         // ctx.closePath();
+
+
+
+
+//         // ctx.clip();
+//         // ctx.drawImage(img, 0, 0);
+//         // ctx.restore();
+
+        
 //     }
+//     img.src = "http://lorempixel.com/1280/720/";
 };
