@@ -49,6 +49,11 @@ register_sidebar(array(
   'before_widget' => '',
   'after_widget'  => '</div>'
 ));
+register_sidebar(array(
+  'name' => 'sentenceBottomSpacesSection',
+  'before_widget' => '',
+  'after_widget'  => ''
+));
 //--resize thumbnails
 add_theme_support('post-thumbnails');
 add_image_size('imagesRoom400x400', 400, 400, true);

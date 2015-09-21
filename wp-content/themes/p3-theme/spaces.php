@@ -54,11 +54,8 @@ Template Name: Spaces
 <?php
 	}
 ?>
-
 <div class="grid-container call-to-action">
 	<div class="grid-100">
-		<p class="uppercase">Un conseil ? Une question ? Un devis ?</p>
-
-		<a href="#contact" class="btn btn-lg btn-primary f-right">Prendre contact avec nous</a>
+		<?php dynamic_sidebar('sentenceBottomSpacesSection'); ?>
 	</div>
 </div>

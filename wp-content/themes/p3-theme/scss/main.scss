@@ -390,6 +390,12 @@
 	padding: 20px;
 	background: $light-blue;
 	margin-bottom: 20px;
+	.textwidget{
+		@include pull(left);
+		&:last-child{
+			@include pull(right);
+		}
+	}
 	p{
 		font-weight: 300;
 		font-size: 23px;
