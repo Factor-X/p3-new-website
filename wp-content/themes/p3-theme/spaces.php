@@ -41,19 +41,10 @@ Template Name: Spaces
 ?>
 	        <div class="copy text-center">
 	            <div class="grid-container">
-	                <div class="grid-80 prefix-10">
+	                <div class="grid-100">
 	                    <h3><?php the_title(); ?></h2>
 	                    <?php the_content(); ?>
 	                </div>
-					<ul class="gallery clearfix">
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/sports/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/abstract/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/city/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/food/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/cats/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/fashion/" alt="" /></div></div></li>
-						<li><div class="losange"><div class="los1"><img src="http://lorempixel.com/300/300/people/" alt="" /></div></div></li>
-					</ul>
 	            </div>
 	        </div>
 <?php

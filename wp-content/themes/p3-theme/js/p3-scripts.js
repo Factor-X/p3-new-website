@@ -29,6 +29,7 @@ $.when(
         fade: false,
         draggable: true,
         asNavFor: '.slider-nav',
+        adaptiveHeight: true,
         responsive:[
         {
             breakpoint:768,
@@ -88,8 +89,6 @@ $.when(
         ]
     });
 
-    $.fn.drawCanvas();
-
     // accordion faq
     $(".faq-accordion .subMenu").hide();
     $(".faq-accordion li.toggleSubMenu span").each( function () {
@@ -106,10 +105,6 @@ $.when(
         }
         return false;
     });
-
-    $('.slider-nav').on('click', function(){
-        $.fn.drawCanvas();
-    })
 });
 });
 
@@ -142,48 +137,3 @@ $(window).scroll(function() {
         $(".main-navbar").removeClass("full-navbar");
     }
 });
-
-
-$.fn.drawCanvas = function(){
-//remove all canvas
-// $(".slider-for .slick-slide #canvas-gallery").nextAll('canvas').remove();
-
-// $(".slider-for .slick-current .grid-container").after(
-//     $(document.createElement("div"))
-//         .attr("class", "grid-container")
-//         .attr("id", "canvas-gallery")
-//         .css("position", "relative")
-// );
-// var img = document.createElement('IMG');
-// $(".slider-for .slick-current #canvas-gallery").append(
-//     $(document.createElement("canvas"))
-//         .attr("class","canvas-element")
-//         .width(1220)
-//         .height(720)
-//         .text('This element is not supported by your browser')
-//     );
-//     var ctx = $(".canvas-element").get(0).getContext('2d');
-
-//     img.onload = function () {
-//         ctx.save();
-
-
-
-//         // ctx.beginPath();
-//         // ctx.moveTo(150, 0);
-//         // ctx.lineTo(300, 75);
-//         // ctx.lineTo(150, 150);
-//         // ctx.lineTo(0, 75);
-//         // ctx.closePath();
-
-
-
-
-//         // ctx.clip();
-//         // ctx.drawImage(img, 0, 0);
-//         // ctx.restore();
-
-        
-//     }
-//     img.src = "http://lorempixel.com/1280/720/";
-};
