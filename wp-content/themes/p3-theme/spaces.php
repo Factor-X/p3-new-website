@@ -54,8 +54,10 @@ Template Name: Spaces
 <?php
 	}
 ?>
-<div class="grid-container call-to-action">
+ <div class="grid-container call-to-action">
 	<div class="grid-100">
-		<?php dynamic_sidebar('sentenceBottomSpacesSection'); ?>
+		<?php
+			dynamic_sidebar("sentenceEn");
+		?>
 	</div>
 </div>

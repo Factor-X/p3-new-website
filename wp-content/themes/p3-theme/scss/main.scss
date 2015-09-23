@@ -67,12 +67,16 @@
 		}
 	}
 }
-#spaces{
+#spaces,
+#salles,
+#spaties{
 	.call-to-show{
 		background: url(img/spaces-section.jpg) top center fixed;
 	}
 }
-#prices{
+#prices,
+#prix,
+#prijes{
 	.call-to-show{
 		background: url(img/prices-section.jpg) top center fixed;
 	}
@@ -179,6 +183,7 @@
 	.languages,
 	.social-networks{
 		margin: 0;
+		text-transform: uppercase;
 	}
 	.navbar{
 		border-bottom: solid 1px #fff;
@@ -342,6 +347,15 @@
 				margin: 0 25px !important;
 			}
 		}
+		@media screen and (max-width: $screen-lg-desktop) {
+			.content-navbar{
+				.navbar{
+					li + li{
+						margin-left: 30px;
+					}
+				}
+			}
+		}
 		@media screen and (max-width: $screen-desktop) {
 			.content-navbar{
 				#menu{
@@ -379,6 +393,13 @@
 					li + li{
 						margin-left: 0;
 					}
+				}
+			}
+		}
+		@media screen and (max-width: $screen-phone + 50 ) {
+			.content-navbar{
+				.social-networks{
+					display: none;
 				}
 			}
 		}
@@ -426,7 +447,10 @@
 	}	
 	@media screen and (max-width: $screen-tablet) {
 		padding: 15px 0;
-		>div{
+		.textwidget{
+			&:last-child{
+				@include pull(none);
+			}
 			p{
 				display: none;
 			}

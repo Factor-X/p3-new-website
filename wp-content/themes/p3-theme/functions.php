@@ -50,10 +50,21 @@ register_sidebar(array(
   'after_widget'  => '</div>'
 ));
 register_sidebar(array(
-  'name' => 'sentenceBottomSpacesSection',
+  'name' => 'sentenceFr',
   'before_widget' => '',
   'after_widget'  => ''
 ));
+register_sidebar(array(
+  'name' => 'sentenceEn',
+  'before_widget' => '',
+  'after_widget'  => ''
+));
+register_sidebar(array(
+  'name' => 'sentenceNl',
+  'before_widget' => '',
+  'after_widget'  => ''
+));
+
 //--resize thumbnails
 add_theme_support('post-thumbnails');
 add_image_size('imagesRoom400x400', 400, 400, true);
@@ -107,12 +118,12 @@ class mono_walker extends Walker_Nav_Menu{
   
   
   $parsedURL = parse_url( esc_attr( $item->url ));
-  $cleanURL = substr_replace($parsedURL['path'],'',-1);//remove last '/';
+  $cleanURL = substr_replace($parsedURL['path'],'',-4);//remove last '/ and lang';
   
   $pathTab = explode('/',$cleanURL);
   $pathTab[sizeof($pathTab)-1] = '#'.$pathTab[sizeof($pathTab)-1];
   $path = implode('/',$pathTab );
-
+  
   $attributes .= ! empty( $item->url )        ? ' href="'   . $path .'"' : '';
   $attributes .= ! empty( $item->url )        ? ' data-title="'   .   sanitize_title($item->title) .'"' : '';
   $description  = ! empty( $item->description ) ? '<span>'.esc_attr( $item->description ).'</span>' : '';
@@ -129,11 +140,9 @@ class mono_walker extends Walker_Nav_Menu{
   $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
  }
 }
-?>
 
-
-
-<?php
+//
+//TRANSFORM GALLERY
 add_filter('post_gallery', 'my_post_gallery', 10, 2);
 function my_post_gallery($output, $attr) {
     global $post;

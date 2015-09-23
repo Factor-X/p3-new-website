@@ -5,21 +5,21 @@ Template Name: Prices
 ?>
 
 <?php
-	if(have_posts()){
-		wp_reset_postdata();
+    if(have_posts()){
+        wp_reset_postdata();
         //show prices from 'working desk' category 
-		query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=5');
+        query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=5');
 ?>
-		<div class="call-to-show">
-			<h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
-		</div>
-		<div class="grid-container content-section">
-		    <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-80 mobile-prefix-10 text-center explains">
-		    	<?php
-		    		$readme = get_post_meta($post->ID, "Readme", true);
-		    	?>
-		        <p><?php echo $readme; ?></p>
-		    </div>
+        <div class="call-to-show">
+            <h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
+        </div>
+        <div class="grid-container content-section">
+            <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-80 mobile-prefix-10 text-center explains">
+                <?php
+                    $readme = get_post_meta($post->ID, "Readme", true);
+                ?>
+                <p><?php echo $readme; ?></p>
+            </div>
 <?php
                 $post = $wp_query->post;
                 if ( in_category('5') ):
@@ -31,10 +31,9 @@ Template Name: Prices
                 </div>
 <?php       
             endif;
-		while(have_posts()){
-			the_post();
-			?>
-			
+        while(have_posts()){
+            the_post();
+            ?>
             <div class="grid-33 tablet-grid-50 mobile-grid-100">
                 <?php
                     if( in_category('Best price') ) $bestPrice=true;
@@ -43,26 +42,29 @@ Template Name: Prices
                 <div class="pricing-table text-center <?php if($bestPrice) echo 'best-price'; ?>">
                     <div class="header">
                         <span><?php the_title(); ?></span>
-                        
                     </div>
                     <div class="content-pricing-table">
                         <div class="price">
-                        	<?php
-                        		$packPrice = get_post_meta($post->ID, 'Price', true);
-                        	?>
+                            <?php
+                                $packPrice = get_post_meta($post->ID, 'Price', true);
+                            ?>
                             <span><?php echo $packPrice; ?></span>
                         </div>
                         <?php the_content(); ?>
                    
                     </div>
                     <div class="reserve">
-                        <a href="#" class="btn btn-lg btn-primary">Je réserve !</a>
+                        <?php
+                            $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
+                            $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
+                        ?>
+                        <a href="<?php echo $reserveLink ?>" class="btn btn-lg btn-primary"><?php echo $reserveBtn; ?></a>
                     </div>
                 </div>
             </div>
-			<?php
-		}
-	}
+            <?php
+        }
+    }
         if(have_posts()){
             wp_reset_postdata();
             //show prices from 'meeting room' category 
@@ -107,7 +109,11 @@ Template Name: Prices
 
                             </div>
                             <div class="reserve">
-                                <a href="#" class="btn btn-lg btn-primary">Je réserve !</a>
+                                <?php
+                                    $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
+                                    $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
+                                ?>
+                                <a href="<?php echo $reserveLink ?>" class="btn btn-lg btn-primary"><?php echo $reserveBtn; ?></a>
                             </div>
                         </div>
                     </div>
