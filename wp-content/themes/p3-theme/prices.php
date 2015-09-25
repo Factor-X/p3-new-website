@@ -8,13 +8,13 @@ Template Name: Prices
     if(have_posts()){
         wp_reset_postdata();
         //show prices from 'working desk' category 
-        query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=5');
+        query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=ASC&cat=29');
 ?>
         <div class="call-to-show">
             <h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
         </div>
         <div class="grid-container content-section">
-            <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-80 mobile-prefix-10 text-center explains">
+            <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-100 mobile-prefix-0 text-center explains">
                 <?php
                     $readme = get_post_meta($post->ID, "Readme", true);
                 ?>
@@ -22,7 +22,7 @@ Template Name: Prices
             </div>
 <?php
                 $post = $wp_query->post;
-                if ( in_category('5') ):
+                if ( in_category(29) ):
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>
@@ -36,7 +36,7 @@ Template Name: Prices
             ?>
             <div class="grid-33 tablet-grid-50 mobile-grid-100">
                 <?php
-                    if( in_category('Best price') ) $bestPrice=true;
+                    if( in_category('Meilleur prix') ) $bestPrice=true;
                     else $bestPrice=false;
                 ?>
                 <div class="pricing-table text-center <?php if($bestPrice) echo 'best-price'; ?>">
@@ -68,9 +68,9 @@ Template Name: Prices
         if(have_posts()){
             wp_reset_postdata();
             //show prices from 'meeting room' category 
-            query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=6');
+            query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=ASC&cat=27');
             $post = $wp_query->post;
-            if ( in_category('6') ):
+            if ( in_category(27) ):
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>
@@ -91,7 +91,7 @@ Template Name: Prices
 ?>
                     <div class="grid-33 tablet-grid-50 mobile-grid-100 <?php echo $klass; ?>">
                         <?php
-                            if( in_category('Best price') ) $bestPrice=true;
+                            if( in_category('Meilleur prix') ) $bestPrice=true;
                             else $bestPrice=false;
                         ?>
                         <div class="pricing-table text-center <?php if($bestPrice==true) echo 'best-price'; ?>">
@@ -127,9 +127,9 @@ Template Name: Prices
         if(have_posts()){
             wp_reset_postdata();
             //show prices from 'additional services' category 
-            query_posts('posts_per_page=20&post_type=price&orderby=custom-fields&order=ASC&cat=7');
+            query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=ASC&cat=23');
             $post = $wp_query->post;
-            if ( in_category('7') ):
+            if ( in_category(23) ):
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>

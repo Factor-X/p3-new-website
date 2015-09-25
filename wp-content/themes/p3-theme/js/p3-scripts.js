@@ -118,7 +118,7 @@ $.fn.scrollToElement = function(){
         var $anchor = $(this);
         
         var url = $anchor.attr('href')
-        var a_href = url.replace('/p3-new-website/', '');
+        var a_href = url.replace('/#', '#');
         if(a_href=='#')
             a_href='#home';
         $('body').stop().animate({

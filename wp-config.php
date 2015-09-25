@@ -19,22 +19,25 @@
  */
 
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
-if ($_SERVER['SERVER_ADDR']=="127.0.0.1") {
+// if ($_SERVER['SERVER_ADDR']=="127.0.0.1") {
 	/** Nom de la base de données de WordPress. */
 	define('DB_NAME', 'p3-new-website');
 	/** Utilisateur de la base de données MySQL. */
 	define('DB_USER', 'root');
 	/** Mot de passe de la base de données MySQL. */
 	define('DB_PASSWORD', '');
-}
-else {
+
+	// define('WP_SITEURL', 'http://p3v2.factorx.eu/');
+	// define('WP_HOME', 'http://p3v2.factorx.eu/');
+// }
+// else {
 	/** Nom de la base de données de WordPress. */
-	define('DB_NAME', 'p3-new-website');
+	// define('DB_NAME', 'p3-new-website');
 	/** Utilisateur de la base de données MySQL. */
-	define('DB_USER', 'root');
+	// define('DB_USER', 'root');
 	/** Mot de passe de la base de données MySQL. */
-	define('DB_PASSWORD', '');
-}
+	// define('DB_PASSWORD', 'root5');
+// }
 /** Adresse de l'hébergement MySQL. */
 define('DB_HOST', 'localhost');
 

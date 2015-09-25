@@ -118,7 +118,7 @@ class mono_walker extends Walker_Nav_Menu{
   
   
   $parsedURL = parse_url( esc_attr( $item->url ));
-  $cleanURL = substr_replace($parsedURL['path'],'',-4);//remove last '/ and lang';
+  $cleanURL = substr_replace($parsedURL['path'],'',-1);//remove last '/';
   
   $pathTab = explode('/',$cleanURL);
   $pathTab[sizeof($pathTab)-1] = '#'.$pathTab[sizeof($pathTab)-1];
@@ -142,17 +142,15 @@ class mono_walker extends Walker_Nav_Menu{
 }
 
 //
-//TRANSFORM GALLERY
+//TRANSFORM gallery
 add_filter('post_gallery', 'my_post_gallery', 10, 2);
 function my_post_gallery($output, $attr) {
     global $post;
-
     if (isset($attr['orderby'])) {
         $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
         if (!$attr['orderby'])
             unset($attr['orderby']);
     }
-
     extract(shortcode_atts(array(
         'order' => 'ASC',
         'orderby' => 'menu_order ID',

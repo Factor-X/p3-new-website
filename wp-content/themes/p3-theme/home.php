@@ -50,14 +50,14 @@ Template Name: Home
 							"container" =>""
 				        ));
 				        //Languages
-				        ?>
-				        <ul class="list-inline languages">
-			        	<?php
-					        pll_the_languages(array(
-					        	"display_names_as" => "slug"
-				        	));
-			    		?>
-				        </ul>
+				    ?>
+				        <!-- <ul class="list-inline languages"> -->
+				    <?php
+				        // pll_the_languages(array(
+				        // 	"display_names_as" => "slug"
+			        	// ));
+			    	?>
+				        <!-- </ul> -->
                     </div>	
                 </div>
             </div>
@@ -65,13 +65,14 @@ Template Name: Home
       
     	<?php
     		$currentlang = get_bloginfo('language');
-    		if($currentlang == 'fr-FR'){
-    			$menuLang = 'main-nav-fr';
-    		} elseif($currentlang == 'en-GB'){
-				$menuLang = 'main-nav-en';
-    		}else{
-    			$menuLang = 'main-nav-nl';
-    		}
+    		$menuLang = 'main-nav-fr';
+    // 		if($currentlang == 'fr-FR'){
+    // 			$menuLang = 'main-nav-fr';
+    // 		} elseif($currentlang == 'en-GB'){
+				// $menuLang = 'main-nav-en';
+    // 		}else{
+    // 			$menuLang = 'main-nav-nl';
+    // 		}
 
 			$menu_items = wp_get_nav_menu_items($menuLang);
 			if( $menu_items ) {
@@ -83,9 +84,8 @@ Template Name: Home
 		?>
 		<section <?php post_class('sep'); ?> id="<?php echo sanitize_title($menu_item->title);?>">
 		<?php 
-			if ( have_posts() && isset($templatePart)){
-   				include(locate_template($templatePart.'.php'));
-			}
+			if ( have_posts() && isset($templatePart))
+				get_template_part( strtolower($templatePart) );
 		?>
 		</section>
 		<?php
