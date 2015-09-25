@@ -2,16 +2,16 @@
 //
 //LOAD SCRIPTS AND STYLESHEETS
 //--jQuery
-function jQueryScripts(){
-    // if (!is_admin()) {
-        wp_register_script('jqueryjs', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3');
-        wp_enqueue_script('jqueryjs');
-    // }
-}
-add_action('init', 'jQueryScripts');
+// function jQueryScripts(){
+//     // if (!is_admin()) {
+//         wp_register_script('jqueryjs', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3');
+//         wp_enqueue_script('jqueryjs');
+//     // }
+// }
+// add_action('init', 'jQueryScripts');
 //--p3-scripts.js
 function p3Scripts() {
-	wp_register_script('p3Scripts', get_bloginfo('stylesheet_directory').'/js/p3-scripts.js', array(), '');
+	wp_register_script('p3Scripts', get_bloginfo('stylesheet_directory').'/js/p3.min.js', array(), '');
     wp_enqueue_script('p3Scripts');
 }
 add_action( 'wp_enqueue_scripts', 'p3Scripts' );
