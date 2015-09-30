@@ -2,16 +2,14 @@
 //
 //LOAD SCRIPTS AND STYLESHEETS
 //--jQuery
-// function jQueryScripts(){
-//     // if (!is_admin()) {
-//         wp_register_script('jqueryjs', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3');
-//         wp_enqueue_script('jqueryjs');
-//     // }
-// }
-// add_action('init', 'jQueryScripts');
+function jQueryScripts(){
+    wp_register_script('jqueryjs',  'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3');
+    wp_enqueue_script('jqueryjs');
+}
+add_action('init', 'jQueryScripts');
 //--p3-scripts.js
 function p3Scripts() {
-	wp_register_script('p3Scripts', get_bloginfo('stylesheet_directory').'/js/p3.min.js', array(), '');
+    wp_register_script('p3Scripts', get_bloginfo('stylesheet_directory').'/js/p3.min.js', array(), '');
     wp_enqueue_script('p3Scripts');
 }
 add_action( 'wp_enqueue_scripts', 'p3Scripts' );
@@ -99,6 +97,66 @@ function questionsTag(){
 add_action('init', 'questionsTag');
 
 //
+//TRANSFORM gallery
+add_filter('post_gallery', 'my_post_gallery', 10, 2);
+function my_post_gallery($output, $attr) {
+    global $post;
+    if (isset($attr['orderby'])) {
+        $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+        if (!$attr['orderby'])
+            unset($attr['orderby']);
+    }
+    extract(shortcode_atts(array(
+        'order' => 'ASC',
+        'orderby' => 'menu_order ID',
+        'id' => $post->ID,
+        'itemtag' => 'dl',
+        'icontag' => 'dt',
+        'captiontag' => 'dd',
+        'columns' => 7,
+        'size' => 'gallery300x300',
+        'include' => '',
+        'exclude' => ''
+    ), $attr));
+
+    $id = intval($id);
+    if ('RAND' == $order) $orderby = 'none';
+
+    if (!empty($include)) {
+        $include = preg_replace('/[^0-9,]+/', '', $include);
+        $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+
+        $attachments = array();
+        foreach ($_attachments as $key => $val) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    }
+
+    if (empty($attachments)) return '';
+
+    $output = "<ul class=\"gallery clearfix list-unstyled\">\n";
+    // Now you loop through each attachment
+    foreach ($attachments as $id => $attachment) {
+        // Fetch the thumbnail (or full image, it's up to you)
+        $img = wp_get_attachment_image_src($id, 'gallery300x300');
+        $url = wp_get_attachment_url( $id );
+
+        $output .= "<li>\n";
+        $output .= "<div class=\"losange\">\n";
+        $output .= "<div class=\"los1\">\n";
+        $output .= "<a href=\"$url\" class=\"fancybox image\" rel=\"gallery-0\" tabindex=\"0\">\n";
+        $output .= "<img src=\"{$img[0]}\" width=\"{$img[1]}\" height=\"{$img[2]}\" alt=\"\" />\n";
+        $output .= "</a>\n";
+        $output .= "</div>\n";
+        $output .= "</div>\n";
+        $output .= "</li>\n";
+    }
+
+    $output .= "</ul>\n";
+    return $output;
+}
+
+//
 //TRANSFORM URL FOR ONEPAGE
 class mono_walker extends Walker_Nav_Menu{
  function start_el(&$output, $item, $depth, $args){
@@ -139,65 +197,5 @@ class mono_walker extends Walker_Nav_Menu{
   
   $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
  }
-}
-
-//
-//TRANSFORM gallery
-add_filter('post_gallery', 'my_post_gallery', 10, 2);
-function my_post_gallery($output, $attr) {
-    global $post;
-    if (isset($attr['orderby'])) {
-        $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
-        if (!$attr['orderby'])
-            unset($attr['orderby']);
-    }
-    extract(shortcode_atts(array(
-        'order' => 'ASC',
-        'orderby' => 'menu_order ID',
-        'id' => $post->ID,
-        'itemtag' => 'dl',
-        'icontag' => 'dt',
-        'captiontag' => 'dd',
-        'columns' => 7,
-        'size' => 'gallery300x300',
-        'include' => '',
-        'exclude' => ''
-    ), $attr));
-
-    $id = intval($id);
-    if ('RAND' == $order) $orderby = 'none';
-
-    if (!empty($include)) {
-        $include = preg_replace('/[^0-9,]+/', '', $include);
-        $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
-
-        $attachments = array();
-        foreach ($_attachments as $key => $val) {
-            $attachments[$val->ID] = $_attachments[$key];
-        }
-    }
-
-    if (empty($attachments)) return '';
-
-    $output = "<ul class=\"gallery clearfix\">\n";
-    // Now you loop through each attachment
-    foreach ($attachments as $id => $attachment) {
-        // Fetch the thumbnail (or full image, it's up to you)
-        $img = wp_get_attachment_image_src($id, 'gallery300x300');
-        $url = wp_get_attachment_url( $id );
-
-        $output .= "<li>\n";
-        $output .= "<div class=\"losange\">\n";
-        $output .= "<div class=\"los1\">\n";
-        $output .= "<a href=\"$url\" class=\"fancybox image\" rel=\"gallery-0\" tabindex=\"0\">\n";
-        $output .= "<img src=\"{$img[0]}\" width=\"{$img[1]}\" height=\"{$img[2]}\" alt=\"\" />\n";
-        $output .= "</a>\n";
-        $output .= "</div>\n";
-        $output .= "</div>\n";
-        $output .= "</li>\n";
-    }
-
-    $output .= "</ul>\n";
-    return $output;
 }
 ?>

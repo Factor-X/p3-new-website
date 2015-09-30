@@ -9,23 +9,25 @@ Template Name: Home
     	<section id="home">
             <div class="d-table">
                 <div class="d-table-row">
-                    <div class="grid-container">
-                        <div class="grid-50 prefix-50 tablet-grid-60 tablet-prefix-40">
-                            <div class="clearfix">
-                                 <div class="logo-white"></div>
-                            </div>
-                            <?php
-	                            if(have_posts()){
-	                            		the_post();
-                    		?>
-                        				<div class="content-home">
-                            				<?php $description = get_bloginfo( 'description', 'display' ); ?>
-                                			<h1 class="uppercase"><?php echo $description; ?></h1>
-                                			<?php the_content(); ?>
-                            			</div>
-                            		<?php
-                        		}
-                        	?>
+                    <div class="container">
+                    	<div class="row">
+	                        <div class="col-lg-6 col-lg-offset-6 col-md-8 col-md-offset-4">
+	                            <div class="clearfix">
+	                                 <div class="logo-white"></div>
+	                            </div>
+	                            <?php
+		                            if(have_posts()){
+		                            		the_post();
+	                    		?>
+	                        				<div class="content-home">
+	                            				<?php $description = get_bloginfo( 'description', 'display' ); ?>
+	                                			<h1 class="uppercase"><?php echo $description; ?></h1>
+	                                			<?php the_content(); ?>
+	                            			</div>
+	                            		<?php
+	                        		}
+	                        	?>
+	                        </div>
                         </div>
                     </div>  
                 </div>

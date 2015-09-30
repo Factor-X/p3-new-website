@@ -12,29 +12,31 @@ Template Name: Faq
 		<div class="call-to-show">
 			<h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
 		</div>
-		<div class="grid-container content-section">
-		    <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-100 mobile-prefix-0 text-center explains">
-		    	<?php
-		    		$readme = get_post_meta($post->ID, "Readme", true);
-		    	?>
-		        <p><?php echo $readme; ?></p>
-		    </div>
-	    	<div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-100 mobile-prefix-0">
-	    		<ul class="faq-accordion">
-<?php
-		while(have_posts()){
-			the_post();
-?>
-					<li class="toggleSubMenu">
-						<span><?php the_title(); ?></span>
-			            <div class="subMenu">
-			                <?php the_content(); ?>
-			        	</div>
-			        </li>
-<?php
-		}
-?>
-				</ul>
+		<div class="container content-section">
+			<div class="row">
+			    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
+			    	<?php
+			    		$readme = get_post_meta($post->ID, "Readme", true);
+			    	?>
+			        <p><?php echo $readme; ?></p>
+			    </div>
+		    	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+		    		<ul class="faq-accordion list-unstyled">
+	<?php
+			while(have_posts()){
+				the_post();
+	?>
+						<li class="toggleSubMenu">
+							<span><?php the_title(); ?></span>
+				            <div class="subMenu">
+				                <?php the_content(); ?>
+				        	</div>
+				        </li>
+	<?php
+			}
+	?>
+					</ul>
+				</div>
 			</div>
 		</div>
 <?php

@@ -6,13 +6,15 @@
 		<div class="call-to-show">
 			<h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
 		</div>
-		<div class="grid-container content-section">
-		    <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-100 mobile-prefix-0 text-center explains">
-		    	<?php
-		    		$readme = get_post_meta($post->ID, "Readme", true);
-		    	?>
-		        <p><?php echo $readme; ?></p>
-		    </div>
+		<div class="container content-section">
+			<div class="row">
+			    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
+			    	<?php
+			    		$readme = get_post_meta($post->ID, "Readme", true);
+			    	?>
+			        <p><?php echo $readme; ?></p>
+			    </div>
+			</div>
 		</div>
 		<div class="slider slider-nav">
 <?php
@@ -34,11 +36,13 @@
     		the_post();
 ?>
 	        <div class="copy text-center">
-	            <div class="grid-container">
-	                <div class="grid-100">
-	                    <h3><?php the_title(); ?></h2>
-	                    <?php the_content(); ?>
-	                </div>
+	            <div class="container">
+	            	<div class="row">
+		                <div class="col-lg-12">
+		                    <h3><?php the_title(); ?></h2>
+		                    <?php the_content(); ?>
+		                </div>
+		            </div>
 	            </div>
 	        </div>
 <?php
@@ -48,8 +52,10 @@
 <?php
 	}
 ?>
-<div class="grid-container call-to-action">
-	<div class="grid-100">
-		<?php dynamic_sidebar('sentenceFr'); ?>
+<div class="container call-to-action">
+	<div class="row">
+		<div class="col-lg-12">
+			<?php dynamic_sidebar('sentenceFr'); ?>
+		</div>
 	</div>
 </div>

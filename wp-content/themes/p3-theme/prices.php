@@ -13,20 +13,21 @@ Template Name: Prices
         <div class="call-to-show">
             <h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
         </div>
-        <div class="grid-container content-section">
-            <div class="grid-60 prefix-20 tablet-grid-80 tablet-prefix-10 mobile-grid-100 mobile-prefix-0 text-center explains">
-                <?php
-                    $readme = get_post_meta($post->ID, "Readme", true);
-                ?>
-                <p><?php echo $readme; ?></p>
-            </div>
+        <div class="container content-section">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
+                    <?php
+                        $readme = get_post_meta($post->ID, "Readme", true);
+                    ?>
+                    <p><?php echo $readme; ?></p>
+                </div>
 <?php
                 $post = $wp_query->post;
                 if ( in_category(29) ):
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>
-                <div class="grid-100">
+                <div class="col-lg-12">
                     <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
                 </div>
 <?php       
@@ -34,7 +35,7 @@ Template Name: Prices
         while(have_posts()){
             the_post();
             ?>
-            <div class="grid-33 tablet-grid-50 mobile-grid-100">
+            <div class="col-lg-2 col-md-4 col-sm-12">
                 <?php
                     if( in_category('Meilleur prix') ) $bestPrice=true;
                     else $bestPrice=false;
@@ -74,7 +75,7 @@ Template Name: Prices
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>
-                <div class="grid-100">
+                <div class="col-lg-12">
                     <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
                 </div>
 <?php       
@@ -89,7 +90,7 @@ Template Name: Prices
                 }
                     $cpt=1;
 ?>
-                    <div class="grid-33 tablet-grid-50 mobile-grid-100 <?php echo $klass; ?>">
+                    <div class="col-lg-2 col-md-4 col-sm-12 <?php echo $klass; ?>">
                         <?php
                             if( in_category('Meilleur prix') ) $bestPrice=true;
                             else $bestPrice=false;
@@ -133,7 +134,7 @@ Template Name: Prices
                 $catName = get_the_category();
                 $catName = $catName[0]->cat_name;
 ?>
-                <div class="grid-100">
+                <div class="col-lg-12">
                     <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
                 </div>
 <?php
@@ -141,7 +142,7 @@ Template Name: Prices
             while (have_posts()) {
                 the_post();
 ?>
-                <div class="grid-80">
+                <div class="col-lg-10">
 <?php
                     the_content();
 ?>
@@ -150,4 +151,5 @@ Template Name: Prices
             }
         }
         ?>
+    </div>
 </div>
