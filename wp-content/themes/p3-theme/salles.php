@@ -1,4 +1,10 @@
 <?php
+/*
+Template Name: Salles
+*/
+?>
+
+<?php
 	if(have_posts()){
 		wp_reset_postdata();
 		query_posts('posts_per_page=10');

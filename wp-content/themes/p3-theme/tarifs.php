@@ -1,172 +1,107 @@
 <?php
-	if(have_posts()){
-		wp_reset_postdata();
-        //show prices from 'working desk' category 
-		query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=DESC&cat=29');
+/*
+Template Name: Tarifs
+*/
 ?>
-		<div class="call-to-show">
-			<h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
-		</div>
-		<div class="container content-section">
-            <div class="row">
-		    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
-		    	<?php
-		    		$readme = get_post_meta($post->ID, "Readme", true);
-		    	?>
-		        <p><?php echo $readme; ?></p>
-		    </div>
+
 <?php
-                $post = $wp_query->post;
-                if ( in_category(29) ):
-                $catName = get_the_category();
-                $catName = $catName[0]->cat_name;
+    if(have_posts()):
+        wp_reset_postdata();
 ?>
-                <div class="col-lg-12">
-                    <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
-                </div>
-<?php       
-            endif;
-		while(have_posts()){
-			the_post();
-			?>
+    <div class="call-to-show">
+        <h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
+    </div>
+    <div class="container content-section">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
+<?php
+        $readme = get_post_meta($post->ID, "Readme", true);
+?>
+                <p><?php echo $readme; ?></p>
+            </div>
+<?php
+        $categories=get_categories();
+        if ($categories):
+            foreach($categories as $category):
+                if ($category->count > 0 && $category->cat_ID != 1 && $category->cat_ID != 4):
+                    $args = array(
+                        'posts_per_page' => -1,
+                        'post_type' => 'price',
+                        'orderby' => 'custom-fields',
+                        'order' => 'ASC',
+                        'cat' => $category->cat_ID
+                    );
+                    query_posts($args);
+?>
+            <div class="col-lg-12">
+                <h2 class="uppercase subtitle text-center"><?php echo $category->name; ?></h2>
+            </div>
+<?php
+                    while(have_posts()):
+                        the_post();
+                        if(in_category(2)):
+?>
+            <div class="col-lg-10">
+<?php
+                            the_content();
+?>               
+            </div>
+<?php                       
+                        else:
+?>
             <div class="col-lg-2 col-md-4 col-sm-12">
-                <?php
-                    if( in_category('Meilleur prix') ) $bestPrice=true;
-                    else $bestPrice=false;
-                ?>
+<?php
+                            $bestPrice=false;
+                            if(in_category(4)) $bestPrice=true;
+?>
                 <div class="pricing-table text-center <?php if($bestPrice) echo 'best-price'; ?>">
                     <div class="header">
                         <span><?php the_title(); ?></span>
                     </div>
                     <div class="content-pricing-table">
                         <div class="price">
-                        	<?php
-                        		$packPrice = get_post_meta($post->ID, 'Price', true);
-                        	?>
+<?php
+                                $packPrice = get_post_meta($post->ID, 'Price', true);
+?>
                             <span><?php echo $packPrice; ?></span>
                         </div>
-                        <?php the_content(); ?>
-                   
+<?php 
+                        the_content();
+?>
                     </div>
                     <div class="reserve">
-                        <?php
+<?php
                             $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
                             $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
-                        ?>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-reserve">
-                            <?php echo $reserveBtn; ?>
-                        </button>
+
+                            if($reserveLink):
+?>
+                                <a target="_blank" href="<?php echo $reserveLink; ?>" class="btn btn-primary"><?php echo $reserveBtn; ?></a>
+<?php
+                            else:
+?>
+                                <button type="button" class="btn btn-primary"><?php echo $reserveBtn; ?></button>
+<?php
+                            endif;
+?>
                     </div>
                 </div>
             </div>
-			<?php
-		}
-	}
-        if(have_posts()){
-            wp_reset_postdata();
-            //show prices from 'meeting room' category 
-            query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=ASC&cat=27');
-            $post = $wp_query->post;
-
-            if ( in_category(27) ):
-                $catName = get_the_category();
-                $catName = $catName[0]->cat_name;
-?>
-                <div class="col-lg-12">
-                    <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
-                </div>
-<?php       
-            endif;
-            $cpt=0;
-            while(have_posts()){
-                the_post();
-                $klass="";
-                $cpt+=1;
-                if($cpt==1):
-                    switch ( $wp_query->found_posts ) {
-                        case '1':
-                            $klass= "col-lg-offset-5 col-md-offset-4";
-                            break;
-                        case '2':
-                             $klass= "col-lg-offset-4 col-md-offset-2";
-                            break;
-                        case '3':
-                             $klass= "col-lg-offset-3";
-                            break;
-                        case '4':
-                             $klass= "col-lg-offset-2";
-                            break;
-                        case '5':
-                             $klass= "col-lg-offset-1";
-                            break;
-                        default:
-                            break;
-                    }
+<?php
+                        endif;
+                    endwhile;
                 endif;
+            endforeach;
+        endif;
 ?>
-                    <div class="col-lg-2 col-md-4 col-sm-12 <?php echo $klass; ?>">
-                        <?php
-                            if( in_category('Meilleur prix') ) $bestPrice=true;
-                            else $bestPrice=false;
-                        ?>
-                        <div class="pricing-table text-center <?php if($bestPrice==true) echo 'best-price'; ?>">
-                            <div class="header">
-                                <span><?php the_title(); ?></span>
-                            </div>
-                            <div class="content-pricing-table">
-                                <div class="price">
-                                        <?php
-                                                $packPrice = get_post_meta($post->ID, 'Price', true);
-                                        ?>
-                                    <span><?php echo $packPrice; ?></span>
-                                </div>
-                                <?php the_content(); ?>
-
-                            </div>
-                            <div class="reserve">
-                                <?php
-                                    $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
-                                    $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
-                                ?>
-                                <a href="<?php echo $reserveLink ?>" class="btn btn-primary"><?php echo $reserveBtn; ?></a>
-                            </div>
-                        </div>
-                    </div>
-<?php
-            }
-?>
-
-<?php
-        }
-        if(have_posts()){
-            wp_reset_postdata();
-            //show prices from 'additional services' category 
-            query_posts('posts_per_page=-1&post_type=price&orderby=custom-fields&order=ASC&cat=23');
-            $post = $wp_query->post;
-            if ( in_category(23) ):
-                $catName = get_the_category();
-                $catName = $catName[0]->cat_name;
-?>
-                <div class="col-lg-12" style="clear: both;">
-                    <h2 class="uppercase subtitle text-center"><?php echo $catName; ?></h2>
-                </div>
-<?php
-            endif;
-            while (have_posts()) {
-                the_post();
-?>
-                <div class="col-lg-10">
-<?php
-                    the_content();
-?>
-                </div>
-<?php
-            }
-        }
-        ?>
+        </div>
     </div>
-</div>
+<?php
+    endif;
+?>
 
+<!-- MODAL
+====================== -->
 <div class="modal fade" id="modal-reserve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -181,4 +116,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
