@@ -211,6 +211,28 @@ display:none;
 }
 `
 
+= Can I play YouTube, Dailymotion and Vimeo movies in a FancyBox overlay? =
+
+Yes. Simply create a link using the Share URL (the full Page URL, the Short URL with or without options like HD etc.) to the YouTube/Vimeo/Dailymotion page in your post content. If you have Auto-detect enabled, the plugin will take care of the rest for you! :)
+
+If you have disabled Auto-detection, give the link a class attribute like `class="fancybox-youtube"` for Youtube, `class="fancybox-vimeo"` for Vimeo and `class="fancybox-dailymotion"` for Dailymotion, to manually enable FancyBox for it.
+
+Both YouTube and Vimeo movies can be made to play immediately after opening by adding the paramer `autoplay=1` to the URL. For example, a short-url YouTube link that should play in HD mode, have the full screen button and auto-start on open, would look like:
+`
+<a href="http://youtu.be/N_tONWXYviM?hd=1&fs=1&autoplay=1">text or thumbnail</a>
+`
+
+
+= I want that 'Show in full-screen' button on my YouTube movies =
+
+Append `&fs=1` to your YouTube share URL.
+
+
+= Can I show a Youtube playlist in FancyBox? =
+
+Yes, just go to Youtube page of any movie that's in the playlist and use the Share button to get the share URL just like with single movies, but this time place a checkmark at the 'Share with playlist' option.  
+
+
 = Can I link a NextGEN thumbnail to a Youtube movie in FancyBox? =
 
 User Mark Szoldan shared a neat trick how to do this:
@@ -231,6 +253,7 @@ jQuery('.fancybox [title*="www.youtube.com"]').each(function() {
 `
 
 This script snippet will scan the image titles and if it finds a Youtube URL there, it will replace the links href attribute value accordingly.
+
 
 = Can I create a gallery of Youtube thumbnails which open in FancyBox? =
 
@@ -288,28 +311,6 @@ For example, a Flash movie with different size:
 `
 <a class="fancybox-swf {width:1024,height:675}" href="link-to-your-swf"></a>
 `
-
-
-= Can I play YouTube, Dailymotion and Vimeo movies in a FancyBox overlay? =
-
-Yes. Simply create a link using the Share URL (the full Page URL, the Short URL with or without options like HD etc.) to the YouTube/Vimeo/Dailymotion page in your post content. If you have Auto-detect enabled, the plugin will take care of the rest for you! :)
-
-If you have disabled Auto-detection, give the link a class attribute like `class="fancybox-youtube"` for Youtube, `class="fancybox-vimeo"` for Vimeo and `class="fancybox-dailymotion"` for Dailymotion, to manually enable FancyBox for it.
-
-Both YouTube and Vimeo movies can be made to play immediately after opening by adding the paramer `autoplay=1` to the URL. For example, a short-url YouTube link that should play in HD mode, have the full screen button and auto-start on open, would look like:
-`
-<a href="http://youtu.be/N_tONWXYviM?hd=1&fs=1&autoplay=1">text or thumbnail</a>
-`
-
-
-= I want that 'Show in full-screen' button on my YouTube movies =
-
-Append `&fs=1` to your YouTube share URL.
-
-
-= Can I show a Youtube playlist in FancyBox? =
-
-Yes, just go to Youtube page of any movie that's in the playlist and use the Share button to get the share URL just like with single movies, but this time place a checkmark at the 'Share with playlist' option.  
 
 
 = The flash movie in the overlay shows BELOW some other flash content that is on the same page! =
