@@ -1,12 +1,12 @@
 jQuery(document).ready(function($) {
 
-    var viewportHeight;
+    var viewportHeight = 768;
     loadPage();
 
     function loadPage() {
-        windowtHeight();
+        countViewportHeight();
         windowSize();
-        if(countViewportHeight() <= 992)
+        if(viewportHeight <= 992)
             buildNavForMobile();
         buildScrollToElement();
         buildChangeAspectNavBar();
@@ -18,24 +18,19 @@ jQuery(document).ready(function($) {
     function windowSize() {
         $("#home").height(viewportHeight + 'px');
         $(window).resize(function() {
-            windowtHeight();
+            countViewportHeight();
             $("#home").height(viewportHeight + 'px');
         });
     }
 
     function buildNavForMobile() {
         $('#menu').click(function() {
-            $('.navbar').stop().slideToggle( "slow", function() {
-            });
+            $('.navbar').stop().slideToggle("slow");
         });
     }
 
-    function windowtHeight() {
-        viewportHeight = countViewportHeight();
-    }
-
     function countViewportHeight() {
-        return $(window).height();
+        viewportHeight = $(window).height();
     }
 
     function buildScrollToElement() {
@@ -72,8 +67,8 @@ jQuery(document).ready(function($) {
     function buildAccordion() {
         $(".faq-accordion .subMenu").hide();
         $(".faq-accordion li.toggleSubMenu span").each( function () {
-            var TexteSpan = $(this).text();
-            $(this).replaceWith('<a href="#">' + TexteSpan + '<\/a>') ;
+            var TextSpan = $(this).text();
+            $(this).replaceWith('<a href="#">' + TextSpan + '<\/a>') ;
         });
         $(".faq-accordion li.toggleSubMenu > a").click( function () {
             if ($(this).next(".subMenu:visible").length != 0) {
