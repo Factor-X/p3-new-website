@@ -8,17 +8,16 @@ Template Name: Tarifs
     if(have_posts()):
         wp_reset_postdata();
 ?>
-    <div class="call-to-show">
-        <h1 class="title-section text-center uppercase"><?php the_title(); ?></h1>
+    <div class="call-to-show txtcenter">
+        <h1 class="title-section"><?php the_title(); ?></h1>
     </div>
     <div class="container content-section">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 text-center explains">
+        <div class="w66 medium-w80 small-w100 tiny-w100 txtcenter center explains">
 <?php
         $readme = get_post_meta($post->ID, "Readme", true);
 ?>
                 <p><?php echo $readme; ?></p>
-            </div>
+        </div>
 <?php
         $categories=get_categories();
         if ($categories):
@@ -33,68 +32,67 @@ Template Name: Tarifs
                     );
                     query_posts($args);
 ?>
-            <div class="col-lg-12">
-                <h2 class="uppercase subtitle text-center"><?php echo $category->name; ?></h2>
+            <div class="w100 txtcenter">
+                <h2 class="uppercase subtitle"><?php echo $category->name; ?></h2>
             </div>
+            <div class="grid-6-medium-3-small-2-tiny-1">
 <?php
                     while(have_posts()):
                         the_post();
                         if(in_category(2)):
 ?>
-            <div class="col-lg-10">
+                <div class="w80">
 <?php
                             the_content();
 ?>               
-            </div>
+                </div>
 <?php                       
                         else:
+                                $bestPrice=false;
+                                if(in_category(4)) $bestPrice=true;
 ?>
-            <div class="col-lg-2 col-md-4 col-sm-12">
-<?php
-                            $bestPrice=false;
-                            if(in_category(4)) $bestPrice=true;
-?>
-                <div class="pricing-table text-center <?php if($bestPrice) echo 'best-price'; ?>">
-                    <div class="header">
-                        <span><?php the_title(); ?></span>
-                    </div>
-                    <div class="content-pricing-table">
-                        <div class="price">
-<?php
-                                $packPrice = get_post_meta($post->ID, 'Price', true);
-?>
-                            <span><?php echo $packPrice; ?></span>
+                    <div class="pricing-table txtcenter <?php if($bestPrice) echo 'best-price'; ?>">
+                        <div class="header">
+                            <span><?php the_title(); ?></span>
                         </div>
+                        <div class="content-pricing-table">
+                            <div class="price">
+<?php
+                                    $packPrice = get_post_meta($post->ID, 'Price', true);
+?>
+                                <span><?php echo $packPrice; ?></span>
+                            </div>
 <?php 
-                        the_content();
+                            the_content();
 ?>
-                    </div>
-                    <div class="reserve">
+                        </div>
+                        <div class="reserve">
 <?php
-                            $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
-                            $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
+                                $reserveLink = get_post_meta($post->ID, "ReserveLink", true);
+                                $reserveBtn = get_post_meta($post->ID, "ReserveBtn", true);
 
-                            if($reserveLink):
+                                if($reserveLink):
 ?>
-                                <a target="_blank" href="<?php echo $reserveLink; ?>" class="btn btn-primary"><?php echo $reserveBtn; ?></a>
+                                    <a target="_blank" href="<?php echo $reserveLink; ?>" class="btn btn-primary"><?php echo $reserveBtn; ?></a>
 <?php
-                            else:
+                                else:
 ?>
-                                <button type="button" class="btn btn-primary"><?php echo $reserveBtn; ?></button>
+                                    <button type="button" class="btn btn-primary"><?php echo $reserveBtn; ?></button>
 <?php
-                            endif;
+                                endif;
 ?>
+                        </div>
                     </div>
-                </div>
-            </div>
 <?php
                         endif;
                     endwhile;
+?>
+            </div>
+<?php
                 endif;
             endforeach;
         endif;
 ?>
-        </div>
     </div>
 <?php
     endif;
@@ -102,11 +100,11 @@ Template Name: Tarifs
 
 <!-- MODAL
 ====================== -->
-<div class="modal fade" id="modal-reserve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal" id="modal-reserve" >
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-header clearfix">
+        <button type="button" class="close"><span>&times;</span></button>
       </div>
       <div class="modal-body">
         <?php

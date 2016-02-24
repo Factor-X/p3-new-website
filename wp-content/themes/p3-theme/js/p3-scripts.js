@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-    var viewportHeight = 768;
+    var viewportHeight = countViewportHeight();
     loadPage();
 
     function loadPage() {
@@ -12,13 +12,13 @@ jQuery(document).ready(function($) {
         buildChangeAspectNavBar();
         buildAccordion();
         loadSlickAndBuildSlider();
-        loadBootstrapJsAndBuildModal();
+        buildModal();
     }
 
     function windowSize() {
         $("#home").height(viewportHeight + 'px');
         $(window).resize(function() {
-            countViewportHeight();
+            viewportHeight = countViewportHeight();
             $("#home").height(viewportHeight + 'px');
         });
     }
@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
     }
 
     function countViewportHeight() {
-        viewportHeight = $(window).height();
+        return $(window).height();
     }
 
     function buildScrollToElement() {
@@ -158,15 +158,11 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function loadBootstrapJsAndBuildModal() {
+    function buildModal() {
         $('.reserve button').click(function() {
-            $.when(
-                $.getScript("wp-content/themes/p3-theme/js/bootstrap.min.js"),
-                $.Deferred(function( deferred ){
-                    $(deferred.resolve);
-                })
-            ).done(function() {
-                $("#modal-reserve").modal();
+           $('.modal').css('display', 'block');
+            $('.close').click(function() {
+                $('.modal').css('display', 'none');
             });
         });
     }
